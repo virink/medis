@@ -1,20 +1,20 @@
 const packager = require('electron-packager')
 const path = require('path')
 const pkg = require('../package')
-const flat = require('electron-osx-sign').flat
+const flat = require('electron-osx-sign')
 
 const resourcesPath = path.join(__dirname, '..', 'resources')
 
 packager({
   dir: path.join(__dirname, '..'),
-  appCopyright: '© 2019, Zihua Li',
+  appCopyright: '© 2019 Virink',
   asar: true,
   overwrite: true,
   electronVersion: pkg.electronVersion,
   icon: path.join(resourcesPath, 'icns', 'MyIcon'),
   out: path.join(__dirname, '..', 'dist', 'out'),
-  platform: 'mas',
-  appBundleId: `li.zihua.${pkg.name}`,
+  platform: 'darwin',
+  appBundleId: `com.virzz.tools.${pkg.name}`,
   appCategoryType: 'public.app-category.developer-tools',
   osxSign: {
     type: process.env.NODE_ENV === 'production' ? 'distribution' : 'development',
@@ -24,7 +24,9 @@ packager({
 }).then((res) => {
   const app = path.join(res[0], `${pkg.productName}.app`)
   console.log('flating...', app)
-  flat({ app }, function done (err) {
+  flat({
+    app
+  }, function done(err) {
     if (err) {
       throw err
     }

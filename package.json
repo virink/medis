@@ -3,15 +3,15 @@
   "description": "GUI for Redis",
   "productName": "Medis",
   "version": "0.7.1",
-  "electronVersion": "4.0.0",
+  "electronVersion": "4.0.1",
   "license": "MIT",
   "author": "luin <i@zihua.li> (http://zihua.li)",
   "main": "dist/main",
   "scripts": {
     "build": "rm -rf dist && webpack",
-    "watch": "WEBPACK_WATCH=true npm run build",
+    "watch": "WEBPACK_WATCH=true yarn run build",
     "start": "electron .",
-    "pack": "NODE_ENV=production npm run build && node bin/pack.js"
+    "pack": "NODE_ENV=production yarn run build && node bin/pack.js"
   },
   "repository": {
     "type": "git",
